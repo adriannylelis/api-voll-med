@@ -54,4 +54,10 @@ public class PacienteController {
         return ResponseEntity.noContent().build(); //Status 204
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var paciente = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
+    }
+
 }
